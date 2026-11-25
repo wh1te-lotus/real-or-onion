@@ -254,15 +254,6 @@ window.HEADLINES = [
     url: "https://www.washingtonpost.com/investigations/2026/09/23/i-am-code-trump-clashed-with-ballroom-architect-over-safety-issues/"
   },
   {
-    id: "r-037",
-    type: "real",
-    displayHeadline: "Appointee Wants To Replace White House Columns With Ones Trump Prefers",
-    originalHeadline: "Appointee wants to replace White House columns with the ones Trump prefers",
-    wasModified: true,
-    publisher: "Washington Post",
-    url: "https://keeptrack.substack.com/p/every-terrible-thing-the-trump-administration-db4"
-  },
-  {
     id: "r-039",
     type: "real",
     displayHeadline: "DOJ Cracks Down On Stickers Covering Trump’s Face",
@@ -614,6 +605,33 @@ window.HEADLINES = [
     url: "https://americanjournalnews.com/white-house-threatens-to-fire-anyone-who-tries-to-quit/"
   },
   {
+    id: "r-089",
+    type: "real",
+    displayHeadline: "Alex Karp Declares Palantir Bastion of Progressive Values",
+    originalHeadline: "Alex Karp Says Palantir Is “Progressive” Now, Months After Fascist Manifesto",
+    wasModified: true,
+    publisher: "Truthout",
+    url: "https://truthout.org/articles/alex-karp-says-palantir-is-progressive-now-months-after-fascist-manifesto/"
+  },
+  {
+    id: "r-090",
+    type: "real",
+    displayHeadline: "DOJ Announces It Thwarted Plot To Change Kash Patel's Gender",
+    originalHeadline: "DOJ: Man threatens to ‘kidnap and gender reassign’ FBI Director Patel",
+    wasModified: true,
+    publisher: "WFLA",
+    url: "https://www.wfla.com/news/national/doj-man-threatens-to-kidnap-and-gender-reassign-fbi-director-patel/"
+  },
+  {
+    id: "r-091",
+    type: "real",
+    displayHeadline: "Toddler Star Ms. Rachel Named Antisemite Of The Year",
+    originalHeadline: "Toddler star Ms. Rachel named finalist for 'Antisemite of the Year' amid Gaza advocacy",
+    wasModified: true,
+    publisher: "The National Desk",
+    url: "https://thenationaldesk.com/news/americas-news-now/toddler-star-ms-rachel-named-finalist-for-antisemite-of-the-year-amid-gaza-advocacy-stopantisemitism-tucker-carlson"
+  },
+  {
     id: "o-001",
     type: "onion",
     displayHeadline: "Trump Boasts Tariffs A Huge Success At Making Things Expensive",
@@ -941,13 +959,6 @@ window.HEADLINES = [
     displayHeadline: "Congressional Candidate Has Different Wife For Campaigning In Rural Counties",
     publisher: "The Onion",
     url: "https://theonion.com/congressional-candidate-has-different-wife-for-campaigning-in-rural-counties/"
-  },
-  {
-    id: "o-049",
-    type: "onion",
-    displayHeadline: "Media Lambasts Biden Administration For Failure To Solve Coronavirus",
-    publisher: "The Onion",
-    url: "https://www.theonion.com/media-lambasts-biden-administration-for-failure-to-solv-1845565473"
   },
   {
     id: "o-050",

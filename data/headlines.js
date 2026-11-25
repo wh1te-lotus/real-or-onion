@@ -308,15 +308,6 @@ window.HEADLINES = [
     url: "https://www.polialert.com/political-news/trump-jon-husted-pile-of-muscle/"
   },
   {
-    id: "r-048",
-    type: "real",
-    displayHeadline: "Trump Insists He Does Not Ramble",
-    originalHeadline: "‘I don’t ramble’: Trump sinks to new levels of delusion",
-    wasModified: true,
-    publisher: "Daily Kos",
-    url: "https://www.dailykos.com/stories/2026/10/22/800116155/videos/i-dont-ramble-trump-sinks-to-new-levels-of-delusion/"
-  },
-  {
     id: "r-049",
     type: "real",
     displayHeadline: "Trump Praises Allah In Threat To Bomb Iran",

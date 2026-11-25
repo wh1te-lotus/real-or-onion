@@ -211,7 +211,7 @@ window.HEADLINES = [
   {
     id: "r-026",
     type: "real",
-    displayHeadline: "Justice Department Questions Whether Nixon Victim of 'Lawfare'",
+    displayHeadline: "Justice Department Questions Whether Nixon Victim of Lawfare",
     originalHeadline: "Decades After Watergate, Justice Department Reviews Whether Nixon Got a Raw Deal",
     wasModified: true,
     publisher: "Wall Street Journal",
@@ -263,15 +263,6 @@ window.HEADLINES = [
     url: "https://keeptrack.substack.com/p/every-terrible-thing-the-trump-administration-608"
   },
   {
-    id: "r-042",
-    type: "real",
-    displayHeadline: "Trump Administration Spends $5 Million To Restore, Gold-Plate Lincoln Memorial Statues",
-    originalHeadline: "Trump administration spending $5M to restore, gold-plate Lincoln Memorial statues",
-    wasModified: true,
-    publisher: "The Hill",
-    url: "https://thehill.com/homenews/administration/5910153-trump-administration-lincoln-memorial-horse-statue-renovations/"
-  },
-  {
     id: "r-044",
     type: "real",
     displayHeadline: "Trump Praises 'Late, Great' Hannibal Lecter",
@@ -283,7 +274,7 @@ window.HEADLINES = [
   {
     id: "r-045",
     type: "real",
-    displayHeadline: "Trump Spends 12 Minutes Telling Anecdote About Arnold Palmer’s Manhood",
+    displayHeadline: "Trump Devotes 12 Minutes Of Campaign Rally To Detailed Recollection Of Arnold Palmer’s Genitalia",
     originalHeadline: "Trump raises eyebrows after crude 12-minute anecdote about Arnold Palmer’s manhood",
     wasModified: true,
     publisher: "The Independent (via AOL)",
@@ -915,13 +906,6 @@ window.HEADLINES = [
     displayHeadline: "Both Campaigns Release Ads Showcasing Trump’s Most Racist Comments",
     publisher: "The Onion",
     url: "https://theonion.com/both-campaigns-release-ads-showcasing-trumps-most-racist-comments/"
-  },
-  {
-    id: "o-043",
-    type: "onion",
-    displayHeadline: "Interior Department Approves Plan For Trump Commemorative Eagle",
-    publisher: "The Onion",
-    url: "https://theonion.com/interior-department-approves-plan-for-trump-commemorative-eagle/"
   },
   {
     id: "o-045",

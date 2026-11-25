@@ -73,6 +73,12 @@
     return answered === 0 ? 0 : Math.round((correct / answered) * 100);
   }
 
+  // One row in the source data has a placeholder instead of the real original headline.
+  function originalText(e) {
+    const o = e.originalHeadline;
+    return !o || /^see link\b/i.test(o) ? "Read the original article" : o;
+  }
+
   function hostname(url) {
     try {
       return new URL(url).hostname.replace(/^www\./, "");
@@ -140,6 +146,41 @@
     return s.filter((e) => !seen.has(e.id)).concat(s.filter((e) => seen.has(e.id)));
   }
 
+  const MAX_IN_A_ROW = 3;
+
+  function longestRun(list) {
+    let best = 0, cur = 0, prev = null;
+    list.forEach((e) => {
+      cur = e.type === prev ? cur + 1 : 1;
+      prev = e.type;
+      best = Math.max(best, cur);
+    });
+    return best;
+  }
+
+  // Interleave the two (already shuffled) lists at random, but never let the same type
+  // run longer than MAX_IN_A_ROW. A random pass can paint itself into a corner near the
+  // end, so retry. If the mix makes the limit impossible (a lopsided pool), return the
+  // best attempt instead of failing.
+  function arrange(real, onion) {
+    let best = null;
+    for (let attempt = 0; attempt < 400; attempt++) {
+      const r = real.slice(), o = onion.slice(), out = [];
+      while (r.length || o.length) {
+        const tail = out.slice(-MAX_IN_A_ROW);
+        const blocked = tail.length === MAX_IN_A_ROW && tail.every((e) => e.type === tail[0].type) ? tail[0].type : null;
+        let pickReal = Math.random() < r.length / (r.length + o.length);
+        if (blocked === "real" && o.length) pickReal = false;
+        if (blocked === "onion" && r.length) pickReal = true;
+        out.push(pickReal ? r.pop() : o.pop());
+      }
+      const run = longestRun(out);
+      if (!best || run < best.run) best = { out, run };
+      if (run <= MAX_IN_A_ROW) break;
+    }
+    return best.out;
+  }
+
   function buildRun(pool, lastSeen) {
     const n = Math.min(RUN_LENGTH, pool.length);
     const seen = new Set(lastSeen);
@@ -152,7 +193,7 @@
     if (real.length < wantReal) { wantReal = real.length; wantOnion = n - wantReal; }
     if (onion.length < wantOnion) { wantOnion = onion.length; wantReal = n - wantOnion; }
 
-    return shuffle(real.slice(0, wantReal).concat(onion.slice(0, wantOnion)));
+    return arrange(shuffle(real.slice(0, wantReal)), shuffle(onion.slice(0, wantOnion)));
   }
 
   // ---------- State ----------
@@ -249,6 +290,13 @@
   }
 
   function goHome() {
+    // Leaving mid-round: the run is abandoned and not counted in the accuracy stats,
+    // but the headlines already answered go into the history so they are not repeated soon.
+    if (state.screen === "play" && state.answers.length) {
+      const ids = state.answers.map((a) => a.entry.id);
+      state.stats.lastSeen = ids.concat(state.stats.lastSeen).slice(0, SEEN_CAP);
+      saveStats(state.stats);
+    }
     state.screen = "start";
     state.phase = "guessing";
     state.confirmReset = false;
@@ -261,9 +309,8 @@
     const header = document.querySelector(".masthead");
     if (!header) return;
     const brand = [h("span", { class: "badge", "aria-hidden": "true", text: "?" }), h("span", { class: "name", text: "Real or Onion?" })];
-    header.replaceChildren(state.screen === "end"
-      ? h("button", { class: "wordmark home-link", type: "button", onclick: goHome, "aria-label": "Real or Onion? Back to home" }, brand)
-      : h("span", { class: "wordmark" }, brand));
+    header.replaceChildren(
+      h("button", { class: "wordmark home-link", type: "button", onclick: goHome, "aria-label": "Real or Onion? Back to home" }, brand));
   }
 
   function resetStats() {
@@ -287,7 +334,7 @@
       class: "link-btn",
       type: "button",
       onclick: resetStats,
-      text: state.confirmReset ? "Click again to erase saved stats" : "Reset saved stats",
+      text: state.confirmReset ? "Click again to erase stats and history" : "Reset saved stats",
     });
   }
 
@@ -335,14 +382,14 @@
           h("span", { class: "chip onion", text: "Onion" }))),
       h("button", { class: "btn btn-primary btn-start", type: "button", onclick: startRun, text: "Start" }),
       lifetimeLine(),
-      state.stats.totalAnswered ? resetControl() : null,
+      state.stats.totalAnswered || state.stats.lastSeen.length ? resetControl() : null,
       lookPicker());
   }
 
   function revealPanel(a) {
     const e = a.entry;
     const isReal = e.type === "real";
-    const linkText = isReal ? e.originalHeadline || e.displayHeadline : e.displayHeadline;
+    const linkText = isReal ? originalText(e) : e.displayHeadline;
     const isLast = state.idx + 1 >= state.run.length;
     const host = hostname(e.url);
 
@@ -474,7 +521,7 @@
     const recap = h("ol", { class: "recap" }, state.answers.map((a) => {
       const e = a.entry;
       const isReal = e.type === "real";
-      const text = isReal ? e.originalHeadline || e.displayHeadline : e.displayHeadline;
+      const text = isReal ? originalText(e) : e.displayHeadline;
       return h("li", { class: a.isCorrect ? "good" : "bad" },
         h("span", { class: "res" }, icon(a.isCorrect ? "check" : "cross"), a.isCorrect ? "Correct" : "Missed"),
         h("span", { class: "rh" }, h("a", { href: e.url, target: "_blank", rel: "noopener noreferrer", text })),

@@ -67,7 +67,7 @@ window.HEADLINES = [
   {
     id: "r-008",
     type: "real",
-    displayHeadline: "Pentagon Chief Pete Hegseth Reads Fake Bible Verse From Pulp Fiction",
+    displayHeadline: "Hegseth Reads Fake Bible Verse From Pulp Fiction",
     originalHeadline: "Pentagon chief Pete Hegseth reads fake Bible verse from Pulp Fiction",
     wasModified: true,
     publisher: "Al Jazeera",
@@ -184,7 +184,7 @@ window.HEADLINES = [
   {
     id: "r-023",
     type: "real",
-    displayHeadline: "RFK Jr. Says He’s Never Seen A 70-Year-Old Man With Full-Blown Autism",
+    displayHeadline: "RFK Jr. Claims He’s Never Seen A 70-Year-Old Man With Full-Blown Autism",
     originalHeadline: "FactChecking RFK Jr.’s Children’s Health Defense Keynote",
     wasModified: true,
     publisher: "FactCheck.org",
@@ -301,7 +301,7 @@ window.HEADLINES = [
   {
     id: "r-049",
     type: "real",
-    displayHeadline: "Trump Praises Allah In Threat To Bomb Iran",
+    displayHeadline: "Trump Praises Allah In Easter Threat To Bomb Iran",
     originalHeadline: "On Easter Sunday, Trump Threatened Iran in Profanity-Laced Warning",
     wasModified: true,
     publisher: "BET",
@@ -337,7 +337,7 @@ window.HEADLINES = [
   {
     id: "r-059",
     type: "real",
-    displayHeadline: "New Trump Rule Deems Killing Endangered Wildlife Legal If It Was An Accident",
+    displayHeadline: "Trump Declares Deems Killing Endangered Wildlife Okay If It Was An Accident",
     originalHeadline: "Killing endangered wildlife is legal if they aren’t the target, new Trump rule says",
     wasModified: true,
     publisher: "AP",
@@ -499,7 +499,7 @@ window.HEADLINES = [
   {
     id: "r-079",
     type: "real",
-    displayHeadline: "Anti-Abortion Catholic Priest Says 'At Least Pedophilia Doesn’t Kill Anyone'",
+    displayHeadline: "Pro-Life Catholic Priest: 'At Least Pedophilia Doesn’t Kill Anyone'",
     originalHeadline: "Catholic priest says \"pedophilia doesn't kill anyone\" after barring pro-abortion lawmakers from communion",
     wasModified: true,
     publisher: "Newsweek",
